@@ -27,7 +27,10 @@ pipeline {
             
       steps {
         container('helm') { 
-          sh "helm version"
+          sh '''
+          pwd
+          helm version
+          '''
         }    
       }
     }
