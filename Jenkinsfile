@@ -20,9 +20,7 @@ pipeline {
         }
       }
       steps {
-        sh '''
-        kubectl get ns
-        '''
+        sh 'kubectl version'
       }
     }
   }
