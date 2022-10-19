@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent any
   stages {
     stage('git scm update') {
       steps {
@@ -7,11 +7,10 @@ pipeline {
       }
     }
 
-    stage('kubectl get ns') {
-      agent { docker 'rancher/kubectl:v1.23.7' }
+    stage('docker ps') {
       steps {
         sh '''
-        kubectl get ns
+        docker ps
         '''
       }
     }
