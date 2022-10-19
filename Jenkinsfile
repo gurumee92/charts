@@ -20,9 +20,9 @@ pipeline {
       }
             
       steps {
-        container('helm') { 
+        container('helm chart deploy') { 
           sh '''
-          helm install sample sample --values=sample/values/develop.yaml --replace
+          helm upgrade --install sample sample --values=sample/values/develop.yaml
           '''
         }    
       }
