@@ -7,17 +7,12 @@ pipeline {
       }
     }
 
-    stage('docker test') {
-        steps {
-            sh 'docker ps'
-        }
-    }
-
     stage('kubectl get ns') {
       agent {
         kubernetes {
               containerTemplate {
                 name 'helm'
+                namespace 'jenkins'
                 image 'lachlanevenson/k8s-helm:v3.9.4'
                 ttyEnabled true
                 command 'cat'
