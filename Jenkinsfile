@@ -25,17 +25,23 @@ pipeline {
         }
     }
 
-    // stage('kubectl get ns') {
-    //   agent { 
-    //     docker {
-    //       image 'rancher/kubectl:v1.23.7' 
-    //     }
-    //   }
-    //   steps {
-    //     sh '''
-    //     kubectl get ns
-    //     '''
-    //   }
-    // }
+    stage('kubectl get ns') {
+      agent {
+        kubernetes {
+              containerTemplate {
+                name 'helm'
+                image 'lachlanevenson/k8s-helm:v3.10.1'
+                ttyEnabled true
+                command 'cat'
+          }
+        }
+      }
+            
+      steps {
+        container('helm') { 
+          sh "helm version"
+        }    
+      }
+    }
   }
 }
