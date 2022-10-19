@@ -28,9 +28,7 @@ pipeline {
       steps {
         container('helm') { 
           sh '''
-          helm install sample argocd-sample/sample -f argocd-sample/sample/values/develop.yaml \
-            --namespace=sample \
-            --create-namespace
+          helm install sample argocd-sample --values=values/develop.yaml
           '''
         }    
       }
