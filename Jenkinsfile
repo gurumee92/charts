@@ -12,11 +12,9 @@ pipeline {
         kubernetes {
               containerTemplate {
                 name 'helm'
-                namespace 'jenkins'
                 image 'lachlanevenson/k8s-helm:v3.9.4'
                 ttyEnabled true
                 command 'cat'
-                serviceAccount 'jenkins'
           }
         }
       }
