@@ -7,6 +7,12 @@ pipeline {
       }
     }
 
+    stage('docker test') {
+        steps {
+            sh 'docker ps'
+        }
+    }
+
     stage('gradle test') {
         agent {
             docker {
