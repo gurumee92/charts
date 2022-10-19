@@ -7,7 +7,7 @@ pipeline {
       }
     }
 
-    stage('kubectl get ns') {
+    stage('helm chart deploy') {
       agent {
         kubernetes {
               containerTemplate {
@@ -20,9 +20,9 @@ pipeline {
       }
             
       steps {
-        container('helm chart deploy') { 
+        container('helm') { 
           sh '''
-          helm upgrade -i -f ./sample/values/develop.yaml sample ./sample 
+          helm upgrade -i -f ./sample/values/develop.yaml sample ./sample
           '''
         }    
       }
