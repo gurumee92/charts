@@ -13,29 +13,17 @@ pipeline {
         }
     }
 
-    stage('gradle test') {
-        agent {
-            docker {
-                image 'gradle:6.7-jdk11'
-                reuseNode true
-            }
+    stage('kubectl get ns') {
+      agent { 
+        docker {
+          image 'rancher/kubectl:v1.23.7' 
         }
-        steps {
-            sh 'gradle --version'
-        }
+      }
+      steps {
+        sh '''
+        kubectl get ns
+        '''
+      }
     }
-
-    // stage('kubectl get ns') {
-    //   agent { 
-    //     docker {
-    //       image 'rancher/kubectl:v1.23.7' 
-    //     }
-    //   }
-    //   steps {
-    //     sh '''
-    //     kubectl get ns
-    //     '''
-    //   }
-    // }
   }
 }
