@@ -30,7 +30,7 @@ pipeline {
         kubernetes {
               containerTemplate {
                 name 'helm'
-                image 'lachlanevenson/k8s-helm:v3.10.1'
+                image 'lachlanevenson/k8s-helm:v3.9.4'
                 ttyEnabled true
                 command 'cat'
           }
