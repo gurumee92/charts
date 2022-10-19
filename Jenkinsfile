@@ -22,7 +22,7 @@ pipeline {
       steps {
         container('helm chart deploy') { 
           sh '''
-          helm upgrade --install sample sample --values=sample/values/develop.yaml
+          helm upgrade --install -f ./sample/values/develop.yaml sample ./sample 
           '''
         }    
       }
