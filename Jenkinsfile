@@ -13,18 +13,6 @@ pipeline {
         }
     }
 
-    stage('gradle test') {
-        agent {
-            docker {
-                image 'gradle:6.7-jdk11'
-                reuseNode true
-            }
-        }
-        steps {
-            sh 'gradle --version'
-        }
-    }
-
     stage('kubectl get ns') {
       agent {
         kubernetes {
