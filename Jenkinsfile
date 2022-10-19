@@ -8,6 +8,7 @@ pipeline {
     }
 
     stage('kubectl get ns') {
+      agent { docker 'rancher/kubectl:v1.23.7' }
       steps {
         sh '''
         kubectl get ns
