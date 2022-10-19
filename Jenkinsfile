@@ -29,6 +29,7 @@ pipeline {
         container('helm') { 
           sh '''
           pwd
+          ls
           helm version
           '''
         }    
